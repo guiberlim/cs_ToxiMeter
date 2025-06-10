@@ -6,7 +6,7 @@ import json
 import re
 
 # Configuração da API da OpenAI
-openai.api_key = "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"
+openai.api_key = "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"
 exec_dir = "C:\\Projetos_pessoais_coding\\voice_extractor2\\csgove.exe"
 output_dir = "C:\\Projetos_pessoais_coding\\voice_extractor2"
 current_dir = os.getcwd() 
@@ -110,7 +110,7 @@ def transcribe_audio(audio_path):
         return None
 
 # Função para analisar o texto transcrito
-def analyze_transcription(transcription, rules):
+def analyze_transcription2(transcription, rules):
     try:
         response = openai.chat.completions.create(
             model="gpt-4",
@@ -118,10 +118,34 @@ def analyze_transcription(transcription, rules):
                 {"role": "system", "content": rules},
                 {"role": "user", "content": f"Texto transcrito: {transcription}"}
             ],
-            max_tokens=500
+            max_tokens=1000
         )
         analysis_content = response.choices[0].message.content
         return json.loads(analysis_content)
+    except Exception as e:
+        st.error(f"Erro durante a análise da transcrição: {e}")
+        return None
+
+def analyze_transcription(transcription, rules):
+    try:
+        response = openai.chat.completions.create(
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": rules + "\nResponda apenas com o JSON."},
+                {"role": "user", "content": f"Texto transcrito: {transcription}"}
+            ],
+            max_tokens=1000,
+            temperature=0.3
+        )
+
+        analysis_content = response.choices[0].message.content
+
+        if not analysis_content or analysis_content.strip() == "":
+            st.warning("A resposta do modelo veio vazia.")
+            return None
+
+        return json.loads(analysis_content)
+
     except Exception as e:
         st.error(f"Erro durante a análise da transcrição: {e}")
         return None
