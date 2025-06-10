@@ -28,9 +28,9 @@ prompt_text = (
                         O TS reflete o nível geral de toxicidade do jogador. Quanto maior, mais tóxico.
 
                         3. Classificação:
-                        - Tóxico: TS >= 25
-                        - Moderado a Tóxico: 15 <= TS < 25
-                        - Limpo a Moderado: TS < 15
+                        - Tóxico: TS >= 11
+                        - Moderado a Tóxico: 2 <= TS < 11
+                        - Limpo a Moderado: TS < 2
 
                         4. Saída Desejada:
                         Para cada jogador, você deve retornar:
