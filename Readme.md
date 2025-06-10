@@ -28,7 +28,8 @@ Este guia descreve como configurar o ambiente, instalar as dependências e execu
 
 1. Certifique-se de que o ambiente virtual está ativo.
 2. Atualize o `pip`: `pip install --upgrade pip`
-3. Instale as dependências principais: `pip install streamlit openai`
+3. Instale as dependências principais: `pip install streamlit==1.41.1 openai==1.59.7` para a versão exata
+4. Ou de maneira genérica se a linha acima não der certo `pip install streamlit openai`
 
 ---
 
