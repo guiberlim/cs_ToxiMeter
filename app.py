@@ -6,7 +6,7 @@ import json
 import re
 
 # Configuração da API da OpenAI
-openai.api_key = "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"
+openai.api_key = "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"
 exec_dir = "C:\\Projetos_pessoais_coding\\voice_extractor2\\csgove.exe"
 output_dir = "C:\\Projetos_pessoais_coding\\voice_extractor2"
 current_dir = os.getcwd() 
